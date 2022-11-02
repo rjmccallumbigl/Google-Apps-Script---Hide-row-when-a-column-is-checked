@@ -29,10 +29,6 @@ function atEdit(e) {
   //  Declare variables
   var spreadsheet = SpreadsheetApp.getActiveSpreadsheet();
   var sheet = spreadsheet.getActiveSheet();
-  var sheetRange = sheet.getDataRange();
-  var sheetRangeValues = sheetRange.getDisplayValues();
-  var headerRow = sheetRangeValues[0];
-  // var checkHeader = headerRow.indexOf("✖");  
 
   // Edited cell gets passed into function
   var range = e.range;
@@ -41,7 +37,6 @@ function atEdit(e) {
   var thisRow = range.getRow();
   var thisCol = range.getColumn();
   var queryRange = sheet.getRange(thisRow, thisCol);
-  var queryRangeValue = queryRange.getDisplayValue();
 
   //  If cell is checked under ColD, hide row of checked cell
   if (thisCol == 4 && thisRow > 1 && queryRange.isChecked()) {
@@ -51,9 +46,5 @@ function atEdit(e) {
 
     //  Set data to spreadsheet
     SpreadsheetApp.flush();
-
-    // if (showSheet.getActiveRange().isChecked()) {    
-
-
   }
 }
